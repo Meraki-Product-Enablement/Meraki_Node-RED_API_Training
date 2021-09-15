@@ -1,0 +1,881 @@
+[
+    {
+        "id": "8e639c55.5aa2e",
+        "type": "tab",
+        "label": "Lesson 1 (Basics)",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f2c70127.30b44",
+        "type": "inject",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 100,
+        "wires": [
+            [
+                "37823a97.15b0d6"
+            ]
+        ]
+    },
+    {
+        "id": "37823a97.15b0d6",
+        "type": "debug",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 450,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "30633deb.1c66a2",
+        "type": "inject",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 110,
+        "y": 1280,
+        "wires": [
+            [
+                "3c338874.28ded8"
+            ]
+        ]
+    },
+    {
+        "id": "35e23e64.d09382",
+        "type": "inject",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 110,
+        "y": 1240,
+        "wires": [
+            [
+                "3c338874.28ded8"
+            ]
+        ]
+    },
+    {
+        "id": "3c338874.28ded8",
+        "type": "switch",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            },
+            {
+                "t": "eq",
+                "v": "100",
+                "vt": "num"
+            },
+            {
+                "t": "gt",
+                "v": "101",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 290,
+        "y": 1260,
+        "wires": [
+            [
+                "a464c08.25b794"
+            ],
+            [
+                "35217207.74391e"
+            ],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a464c08.25b794",
+        "type": "debug",
+        "z": "8e639c55.5aa2e",
+        "name": "Message is true",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 540,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "35217207.74391e",
+        "type": "debug",
+        "z": "8e639c55.5aa2e",
+        "name": "Message is false",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 550,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "f5e47395.10bfe",
+        "type": "inject",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 440,
+        "wires": [
+            [
+                "230423c8.5f7fec"
+            ]
+        ]
+    },
+    {
+        "id": "230423c8.5f7fec",
+        "type": "debug",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 430,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "d806b0b7.02605",
+        "type": "change",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "This is not a timestamp",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 800,
+        "wires": [
+            [
+                "d6083bf.cf2a1c8"
+            ]
+        ]
+    },
+    {
+        "id": "a081f5a.d716f08",
+        "type": "inject",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 800,
+        "wires": [
+            [
+                "d806b0b7.02605",
+                "e88d7e33.2c9c"
+            ]
+        ]
+    },
+    {
+        "id": "d6083bf.cf2a1c8",
+        "type": "debug",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "fc6711f6.22b63",
+        "type": "change",
+        "z": "8e639c55.5aa2e",
+        "name": "flow.OrgID = 123",
+        "rules": [
+            {
+                "t": "set",
+                "p": "OrgID",
+                "pt": "flow",
+                "to": "123",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 1980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e88d7e33.2c9c",
+        "type": "debug",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 130,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "4124b2ac.5c898c",
+        "type": "inject",
+        "z": "8e639c55.5aa2e",
+        "name": "Start",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 1980,
+        "wires": [
+            [
+                "fc6711f6.22b63"
+            ]
+        ]
+    },
+    {
+        "id": "dff81aec.c30d48",
+        "type": "change",
+        "z": "8e639c55.5aa2e",
+        "name": "flow.OrgID = 456",
+        "rules": [
+            {
+                "t": "set",
+                "p": "OrgID",
+                "pt": "flow",
+                "to": "456",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 2060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a1bf767f.256348",
+        "type": "inject",
+        "z": "8e639c55.5aa2e",
+        "name": "Start",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 2060,
+        "wires": [
+            [
+                "dff81aec.c30d48"
+            ]
+        ]
+    },
+    {
+        "id": "95188ef.246557",
+        "type": "inject",
+        "z": "8e639c55.5aa2e",
+        "name": "Inspect flow.OrgID",
+        "props": [
+            {
+                "p": "organizationId",
+                "v": "OrgID",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "str",
+        "x": 170,
+        "y": 2240,
+        "wires": [
+            [
+                "e274e895.520ff8"
+            ]
+        ]
+    },
+    {
+        "id": "e274e895.520ff8",
+        "type": "switch",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "property": "OrgID",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "123",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "456",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 470,
+        "y": 2240,
+        "wires": [
+            [
+                "28856588.185b3a"
+            ],
+            [
+                "a5bc6ede.f551"
+            ],
+            [
+                "af7d7bb3.5c5f98"
+            ]
+        ]
+    },
+    {
+        "id": "28856588.185b3a",
+        "type": "debug",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "organizationId",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 2220,
+        "wires": []
+    },
+    {
+        "id": "a5bc6ede.f551",
+        "type": "debug",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "organizationId",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 2260,
+        "wires": []
+    },
+    {
+        "id": "60a3cddb.d45c94",
+        "type": "comment",
+        "z": "8e639c55.5aa2e",
+        "name": "A simple flow",
+        "info": "",
+        "x": 130,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "d9d7da39.b65f78",
+        "type": "comment",
+        "z": "8e639c55.5aa2e",
+        "name": "Inspecting the whole message",
+        "info": "",
+        "x": 180,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "bd51b008.8ea51",
+        "type": "comment",
+        "z": "8e639c55.5aa2e",
+        "name": "Setting or changing the message",
+        "info": "",
+        "x": 170,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "980719f9.6a7c28",
+        "type": "comment",
+        "z": "8e639c55.5aa2e",
+        "name": "Making decisions using switch",
+        "info": "",
+        "x": 170,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "e7627d84.822b7",
+        "type": "comment",
+        "z": "8e639c55.5aa2e",
+        "name": "Using contexts / variables",
+        "info": "",
+        "x": 170,
+        "y": 1520,
+        "wires": []
+    },
+    {
+        "id": "318f6e9e.a2db62",
+        "type": "inject",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 1580,
+        "wires": [
+            [
+                "ab1bfefc.41f13"
+            ]
+        ]
+    },
+    {
+        "id": "ab1bfefc.41f13",
+        "type": "change",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "organizationId",
+                "pt": "msg",
+                "to": "12345",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 1580,
+        "wires": [
+            [
+                "dde3508f.1137c"
+            ]
+        ]
+    },
+    {
+        "id": "dde3508f.1137c",
+        "type": "debug",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 650,
+        "y": 1580,
+        "wires": []
+    },
+    {
+        "id": "af7d7bb3.5c5f98",
+        "type": "debug",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "organizationId",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 2300,
+        "wires": []
+    },
+    {
+        "id": "41c38867.7970e8",
+        "type": "comment",
+        "z": "8e639c55.5aa2e",
+        "name": "Using flow variables to save time",
+        "info": "",
+        "x": 190,
+        "y": 1900,
+        "wires": []
+    },
+    {
+        "id": "2c85e785.4a4048",
+        "type": "inject",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 2660,
+        "wires": [
+            [
+                "78da4e2b.bf547"
+            ]
+        ]
+    },
+    {
+        "id": "78da4e2b.bf547",
+        "type": "link out",
+        "z": "8e639c55.5aa2e",
+        "name": "From my Inject Node",
+        "links": [
+            "d50e3bf5.aa39e8",
+            "9100198b.2e3408"
+        ],
+        "x": 355,
+        "y": 2660,
+        "wires": []
+    },
+    {
+        "id": "9100198b.2e3408",
+        "type": "link in",
+        "z": "8e639c55.5aa2e",
+        "name": "To my debug node",
+        "links": [
+            "78da4e2b.bf547"
+        ],
+        "x": 95,
+        "y": 2800,
+        "wires": [
+            [
+                "6530f71a.7077e8"
+            ]
+        ]
+    },
+    {
+        "id": "6530f71a.7077e8",
+        "type": "debug",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 295,
+        "y": 2800,
+        "wires": []
+    },
+    {
+        "id": "b384608f.b663d",
+        "type": "comment",
+        "z": "8e639c55.5aa2e",
+        "name": "Virtual Wires",
+        "info": "",
+        "x": 150,
+        "y": 2580,
+        "wires": []
+    },
+    {
+        "id": "9c35e895.65f2f8",
+        "type": "delay",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 275,
+        "y": 2880,
+        "wires": [
+            [
+                "385472e3.a6b5de"
+            ]
+        ]
+    },
+    {
+        "id": "d50e3bf5.aa39e8",
+        "type": "link in",
+        "z": "8e639c55.5aa2e",
+        "name": "To my delay node",
+        "links": [
+            "78da4e2b.bf547"
+        ],
+        "x": 90,
+        "y": 2880,
+        "wires": [
+            [
+                "9c35e895.65f2f8"
+            ]
+        ]
+    },
+    {
+        "id": "385472e3.a6b5de",
+        "type": "debug",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 505,
+        "y": 2880,
+        "wires": []
+    },
+    {
+        "id": "11143df9.8af052",
+        "type": "inject",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 200,
+        "wires": [
+            [
+                "5fb1f4ee.83acac"
+            ]
+        ]
+    },
+    {
+        "id": "5fb1f4ee.83acac",
+        "type": "debug",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 450,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "ab3729cb.7a5808",
+        "type": "inject",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 1660,
+        "wires": [
+            [
+                "40cbb969.597088"
+            ]
+        ]
+    },
+    {
+        "id": "40cbb969.597088",
+        "type": "debug",
+        "z": "8e639c55.5aa2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "organizationId",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 1660,
+        "wires": []
+    },
+    {
+        "id": "bbdc086b.5f8108",
+        "type": "comment",
+        "z": "8e639c55.5aa2e",
+        "name": "Verson 1.1",
+        "info": "Version 1.1\nLast updated on Sept. 15 2021",
+        "x": 1460,
+        "y": 20,
+        "wires": []
+    }
+]

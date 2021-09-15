@@ -1,0 +1,1277 @@
+[
+    {
+        "id": "643264c1.c2c88c",
+        "type": "tab",
+        "label": "Lesson 3 (HTTP endpoints)",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f0523178.14061",
+        "type": "inject",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "on",
+        "payloadType": "str",
+        "x": 170,
+        "y": 2860,
+        "wires": [
+            [
+                "7631f2e3.53af2c"
+            ]
+        ]
+    },
+    {
+        "id": "294958d5.1e4808",
+        "type": "debug",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 640,
+        "y": 2900,
+        "wires": []
+    },
+    {
+        "id": "41ad5726.151eb8",
+        "type": "inject",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "off",
+        "payloadType": "str",
+        "x": 170,
+        "y": 2940,
+        "wires": [
+            [
+                "7631f2e3.53af2c"
+            ]
+        ]
+    },
+    {
+        "id": "7631f2e3.53af2c",
+        "type": "ngrok",
+        "z": "643264c1.c2c88c",
+        "port": "",
+        "portType": "node-red",
+        "host": "",
+        "hostType": "localhost",
+        "creds": "",
+        "region": "",
+        "regionType": "us",
+        "proto": "http",
+        "bind_tls": "",
+        "bind_tlsType": "https",
+        "subdomain": "",
+        "subdomainType": "none",
+        "auth": "",
+        "authType": "none",
+        "hostHeader": "",
+        "hostHeaderType": "none",
+        "name": "",
+        "inputs": 1,
+        "x": 410,
+        "y": 2900,
+        "wires": [
+            [
+                "294958d5.1e4808"
+            ]
+        ]
+    },
+    {
+        "id": "4900ff14.5fb38",
+        "type": "http in",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "url": "/helloworld",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "7019e92f.31db78"
+            ]
+        ]
+    },
+    {
+        "id": "ae499f01.a61f3",
+        "type": "http response",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 690,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "7019e92f.31db78",
+        "type": "change",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "<H1>Hello to you!</H1>",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 280,
+        "wires": [
+            [
+                "ae499f01.a61f3"
+            ]
+        ]
+    },
+    {
+        "id": "77ea93ad.0da25c",
+        "type": "http response",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 730,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "498ad46.826ad2c",
+        "type": "function",
+        "z": "643264c1.c2c88c",
+        "name": "msg.payload = \"Hello Javascript!\";",
+        "func": "msg.payload = \"Hello Javascript World!\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 460,
+        "y": 700,
+        "wires": [
+            [
+                "77ea93ad.0da25c"
+            ]
+        ]
+    },
+    {
+        "id": "86bf05d5.f89208",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "Turn NGROK on/off",
+        "info": "",
+        "x": 210,
+        "y": 2800,
+        "wires": []
+    },
+    {
+        "id": "dea7d91b.b31a38",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "FLOW 1: Receive a GET Request and respond",
+        "info": "",
+        "x": 270,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "979ad875.bdbd58",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "FLOW 2: Receive a GET Request and respond using JS",
+        "info": "",
+        "x": 300,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "6bdd374b.713ee8",
+        "type": "http in",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "url": "/hellojs/:name",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 1140,
+        "wires": [
+            [
+                "8e3fd16d.ef381",
+                "a9ebe753.89be88"
+            ]
+        ]
+    },
+    {
+        "id": "535c4188.5c5ae",
+        "type": "http response",
+        "z": "643264c1.c2c88c",
+        "name": "HTTP response",
+        "statusCode": "200",
+        "headers": {},
+        "x": 900,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "8e3fd16d.ef381",
+        "type": "function",
+        "z": "643264c1.c2c88c",
+        "name": "msg.payload = \"Hello <myname>\";",
+        "func": "msg.payload = 'Hello ' + msg.req.params.name;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 560,
+        "y": 1140,
+        "wires": [
+            [
+                "535c4188.5c5ae"
+            ]
+        ]
+    },
+    {
+        "id": "a9ebe753.89be88",
+        "type": "debug",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "req.params",
+        "targetType": "msg",
+        "x": 180,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "dd3da2e8.8ad61",
+        "type": "http in",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "url": "/hellojs",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 700,
+        "wires": [
+            [
+                "498ad46.826ad2c"
+            ]
+        ]
+    },
+    {
+        "id": "57914019.552ae",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "FLOW 3: Receive a GET Request with URL parameters and respond ",
+        "info": "",
+        "x": 340,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "e400af8e.2134b",
+        "type": "http in",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "url": "/webhook/abc123456",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 3320,
+        "wires": [
+            [
+                "fe3cd95f.631278",
+                "8264e758.a42948"
+            ]
+        ]
+    },
+    {
+        "id": "375fbb09.b873b4",
+        "type": "http response",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 870,
+        "y": 3280,
+        "wires": []
+    },
+    {
+        "id": "fe3cd95f.631278",
+        "type": "debug",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 170,
+        "y": 3380,
+        "wires": []
+    },
+    {
+        "id": "ea33ca7b.ece3a8",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "Receive a Meraki Test Webhook - CHANGE TO POST",
+        "info": "",
+        "x": 300,
+        "y": 3260,
+        "wires": []
+    },
+    {
+        "id": "62386a35.06c894",
+        "type": "plate-recognizer",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "inputField": "payload",
+        "inputFieldType": "msg",
+        "outputField": "payload",
+        "outputFieldType": "msg",
+        "url": "https://api.platerecognizer.com/v1/plate-reader/",
+        "ignoreDuring": true,
+        "makeAndModel": false,
+        "statusText": "scores",
+        "cameraId": "001",
+        "separateMsg": false,
+        "regionFilter": true,
+        "regionList": "[\"gb\",\"us\"]",
+        "regionListType": "json",
+        "x": 960,
+        "y": 4540,
+        "wires": [
+            [
+                "dbd1a9c1.d68778",
+                "798c75e5.2ee99c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "5501b113.bdbff",
+        "type": "inject",
+        "z": "643264c1.c2c88c",
+        "name": "GO",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "num",
+        "x": 170,
+        "y": 4400,
+        "wires": [
+            [
+                "a9f1abb.169e058"
+            ]
+        ]
+    },
+    {
+        "id": "14ca6634.878d7a",
+        "type": "http request",
+        "z": "643264c1.c2c88c",
+        "name": "Request Image",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 1240,
+        "y": 4400,
+        "wires": [
+            [
+                "62386a35.06c894"
+            ]
+        ]
+    },
+    {
+        "id": "a9f1abb.169e058",
+        "type": "function",
+        "z": "643264c1.c2c88c",
+        "name": "Add HTTP Headers",
+        "func": "msg.headers = {};\nmsg.headers['X-Cisco-Meraki-API-Key'] = 'MERAKI API KEY GOES HERE';\nmsg.headers['Content-Type'] = 'application/json';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 4400,
+        "wires": [
+            [
+                "b028b01b80ec237f"
+            ]
+        ]
+    },
+    {
+        "id": "259b57b0.29f968",
+        "type": "delay",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1040,
+        "y": 4400,
+        "wires": [
+            [
+                "14ca6634.878d7a"
+            ]
+        ]
+    },
+    {
+        "id": "abca16cd.735158",
+        "type": "debug",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.url",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 4480,
+        "wires": []
+    },
+    {
+        "id": "8533cf17.ad1a9",
+        "type": "change",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "payload.url",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 850,
+        "y": 4400,
+        "wires": [
+            [
+                "259b57b0.29f968"
+            ]
+        ]
+    },
+    {
+        "id": "17b1bc7.ef9d644",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "ANPR fun with Meraki Snapshot",
+        "info": "",
+        "x": 230,
+        "y": 4300,
+        "wires": []
+    },
+    {
+        "id": "ba93eb7c.b4f7a8",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "Using NGROK to make your HTTP endpoints public",
+        "info": "",
+        "x": 290,
+        "y": 3200,
+        "wires": []
+    },
+    {
+        "id": "36dee642.7c98ca",
+        "type": "inject",
+        "z": "643264c1.c2c88c",
+        "name": "Inject",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 2420,
+        "wires": [
+            [
+                "cd6413.287d4bf"
+            ]
+        ]
+    },
+    {
+        "id": "413f4ee.e176db",
+        "type": "debug",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 950,
+        "y": 2420,
+        "wires": []
+    },
+    {
+        "id": "1cd2fb47.e27f85",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "FLOW 5: MAKE a Web Request with headers",
+        "info": "",
+        "x": 290,
+        "y": 2360,
+        "wires": []
+    },
+    {
+        "id": "cd6413.287d4bf",
+        "type": "function",
+        "z": "643264c1.c2c88c",
+        "name": "Add HTTP Headers",
+        "func": "\nmsg.headers = {};\nmsg.headers['User-Agent'] = 'Automated Script contact <your email address>';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 410,
+        "y": 2420,
+        "wires": [
+            [
+                "443feebb.55c8"
+            ]
+        ]
+    },
+    {
+        "id": "8264e758.a42948",
+        "type": "switch",
+        "z": "643264c1.c2c88c",
+        "name": " Check the Secret",
+        "property": "payload.sharedSecret",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "supersecret",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 550,
+        "y": 3320,
+        "wires": [
+            [
+                "375fbb09.b873b4"
+            ],
+            [
+                "4d83efc5.b6cd5"
+            ]
+        ]
+    },
+    {
+        "id": "443feebb.55c8",
+        "type": "http request",
+        "z": "643264c1.c2c88c",
+        "name": "Example Public API Endpoint",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://api.ipify.org",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 700,
+        "y": 2420,
+        "wires": [
+            [
+                "413f4ee.e176db"
+            ]
+        ]
+    },
+    {
+        "id": "74096a50.cb90d4",
+        "type": "function",
+        "z": "643264c1.c2c88c",
+        "name": "Add HTTP Headers",
+        "func": "msg.headers = {};\nmsg.headers['X-Cisco-Meraki-API-Key'] = 'ADD YOUR API KEY HERE';\nmsg.headers['Content-Type'] = 'application/json';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 4020,
+        "wires": [
+            [
+                "5a457a2c.60aa54"
+            ]
+        ]
+    },
+    {
+        "id": "5a457a2c.60aa54",
+        "type": "http request",
+        "z": "643264c1.c2c88c",
+        "name": "Get Camera Snapshot V1",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.meraki.com/api/v1/devices/[CAMERA SERIAL]/camera/generateSnapshot",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 850,
+        "y": 4020,
+        "wires": [
+            [
+                "4ee2bfaf.94c6d",
+                "38021c44.653344"
+            ]
+        ]
+    },
+    {
+        "id": "2cfc4006.33925",
+        "type": "http request",
+        "z": "643264c1.c2c88c",
+        "name": "Make WebEx Request",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://webexapis.com/v1/messages",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 860,
+        "y": 4160,
+        "wires": [
+            [
+                "1e08ec17.fd3204"
+            ]
+        ]
+    },
+    {
+        "id": "b56f6787.f75e88",
+        "type": "delay",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 400,
+        "y": 4160,
+        "wires": [
+            [
+                "5a86ad4a.901084"
+            ]
+        ]
+    },
+    {
+        "id": "4ee2bfaf.94c6d",
+        "type": "change",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "snapshot",
+                "pt": "msg",
+                "to": "payload.url",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1110,
+        "y": 4020,
+        "wires": [
+            [
+                "31d80c4a.d9cb24"
+            ]
+        ]
+    },
+    {
+        "id": "db104dc8.b800b",
+        "type": "inject",
+        "z": "643264c1.c2c88c",
+        "name": "Manual Start",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 430,
+        "y": 3940,
+        "wires": [
+            [
+                "74096a50.cb90d4"
+            ]
+        ]
+    },
+    {
+        "id": "5a86ad4a.901084",
+        "type": "function",
+        "z": "643264c1.c2c88c",
+        "name": "Add Headers and Body",
+        "func": "// Request Content\n\nmsg.payload = {\n  \"toPersonEmail\": \"camera_snapshot_test@webex.bot\",\n  \"files\": [\n    msg.snapshot\n  ]\n}\n\n\n// Request Headers\n\nmsg.headers = {};\nmsg.headers['Authorization'] = 'WEBEX API TOKEN HERE';\nmsg.headers['Content-Type'] = 'application/json';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 610,
+        "y": 4160,
+        "wires": [
+            [
+                "2cfc4006.33925"
+            ]
+        ]
+    },
+    {
+        "id": "dbd1a9c1.d68778",
+        "type": "debug",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.results[0].plate",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 4520,
+        "wires": []
+    },
+    {
+        "id": "b890b5f4.49d808",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "WebEx Bot fun with Meraki Snapshot",
+        "info": "",
+        "x": 250,
+        "y": 3780,
+        "wires": []
+    },
+    {
+        "id": "98d74129.e23e2",
+        "type": "http response",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 150,
+        "y": 4100,
+        "wires": []
+    },
+    {
+        "id": "38021c44.653344",
+        "type": "debug",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 830,
+        "y": 4080,
+        "wires": []
+    },
+    {
+        "id": "6e98615a.98a7c",
+        "type": "debug",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1210,
+        "y": 4160,
+        "wires": []
+    },
+    {
+        "id": "1e08ec17.fd3204",
+        "type": "json",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1050,
+        "y": 4160,
+        "wires": [
+            [
+                "6e98615a.98a7c"
+            ]
+        ]
+    },
+    {
+        "id": "9302683.aa64198",
+        "type": "http in",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "url": "/webhook/abc123",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 210,
+        "y": 4020,
+        "wires": [
+            [
+                "74096a50.cb90d4",
+                "98d74129.e23e2"
+            ]
+        ]
+    },
+    {
+        "id": "40c76ecd.0a376",
+        "type": "http response",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 670,
+        "y": 1600,
+        "wires": []
+    },
+    {
+        "id": "501eee77.e2dac",
+        "type": "debug",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "req.headers",
+        "targetType": "msg",
+        "x": 210,
+        "y": 1660,
+        "wires": []
+    },
+    {
+        "id": "384da651.f00f7a",
+        "type": "http in",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "url": "/hellopost",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 200,
+        "y": 1600,
+        "wires": [
+            [
+                "501eee77.e2dac",
+                "307d4229.495c1e",
+                "f9cd6ab4.ef3e48"
+            ]
+        ]
+    },
+    {
+        "id": "1c0c1ae9.a2c1b5",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "FLOW 4: Receive a POST Web Request and respond",
+        "info": "",
+        "x": 320,
+        "y": 1540,
+        "wires": []
+    },
+    {
+        "id": "307d4229.495c1e",
+        "type": "change",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Hello to you!",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 1600,
+        "wires": [
+            [
+                "40c76ecd.0a376"
+            ]
+        ]
+    },
+    {
+        "id": "d4b791f1.b9067",
+        "type": "http request",
+        "z": "643264c1.c2c88c",
+        "name": "Make POST Request",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "127.0.0.1:1880/hellopost",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 440,
+        "y": 1980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d7dac266.48ed1",
+        "type": "inject",
+        "z": "643264c1.c2c88c",
+        "name": "Inject Start",
+        "props": [
+            {
+                "p": "payload",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 1980,
+        "wires": [
+            [
+                "d4b791f1.b9067"
+            ]
+        ]
+    },
+    {
+        "id": "c403f38f.193f4",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "Use Node-Red to make the POST reqest",
+        "info": "",
+        "x": 280,
+        "y": 1920,
+        "wires": []
+    },
+    {
+        "id": "4d83efc5.b6cd5",
+        "type": "debug",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 3360,
+        "wires": []
+    },
+    {
+        "id": "798c75e5.2ee99c",
+        "type": "debug",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1190,
+        "y": 4580,
+        "wires": []
+    },
+    {
+        "id": "dbce4334.9652b",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "API Request Format",
+        "info": "/devices/{serial}/camera/generateSnapshot",
+        "x": 830,
+        "y": 3940,
+        "wires": []
+    },
+    {
+        "id": "f9cd6ab4.ef3e48",
+        "type": "debug",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 190,
+        "y": 1700,
+        "wires": []
+    },
+    {
+        "id": "f6982847.e87ca8",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "WebEX Documentation for Creating a Message",
+        "info": "https://developer.webex.com/docs/api/v1/messages/create-a-message",
+        "x": 280,
+        "y": 3820,
+        "wires": []
+    },
+    {
+        "id": "8be2f32d.5fffc",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "WebEx How to create a bot",
+        "info": "https://developer.webex.com/my-apps/new/bot",
+        "x": 220,
+        "y": 3860,
+        "wires": []
+    },
+    {
+        "id": "f8fa013.da0aa",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "Meraki Dashboard API V1 - snapshot endpoint",
+        "info": "https://developer.cisco.com/meraki/api-v1/#!generate-device-camera-snapshot",
+        "x": 280,
+        "y": 3900,
+        "wires": []
+    },
+    {
+        "id": "9389b568.e28168",
+        "type": "link in",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "links": [
+            "31d80c4a.d9cb24"
+        ],
+        "x": 275,
+        "y": 4160,
+        "wires": [
+            [
+                "b56f6787.f75e88"
+            ]
+        ]
+    },
+    {
+        "id": "31d80c4a.d9cb24",
+        "type": "link out",
+        "z": "643264c1.c2c88c",
+        "name": "",
+        "links": [
+            "9389b568.e28168"
+        ],
+        "x": 1245,
+        "y": 4020,
+        "wires": []
+    },
+    {
+        "id": "bdd352426a0749ec",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "API Request Format",
+        "info": "/devices/{serial}/camera/generateSnapshot",
+        "x": 590,
+        "y": 4320,
+        "wires": []
+    },
+    {
+        "id": "6f0f52542b7e1bd8",
+        "type": "change",
+        "z": "643264c1.c2c88c",
+        "name": "set test msg.url",
+        "rules": [
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "https://us1-cdn.openchannel.io/59dd5762ca753d3e42491710/public/5fe3e36dbe803849e5261e4f.jpg",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1160,
+        "y": 4300,
+        "wires": [
+            [
+                "14ca6634.878d7a"
+            ]
+        ]
+    },
+    {
+        "id": "796f361e6937ee7d",
+        "type": "inject",
+        "z": "643264c1.c2c88c",
+        "name": "Test pic from Plate Recognizer",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 930,
+        "y": 4300,
+        "wires": [
+            [
+                "6f0f52542b7e1bd8"
+            ]
+        ]
+    },
+    {
+        "id": "99a375b7.9bd398",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "Verson 1.1",
+        "info": "Version 1.1\nLast updated on Sept. 15 2021",
+        "x": 1460,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "6a6955e.82686ac",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "Camera SN for testing",
+        "info": "If you dont have an organization with a MV camera available for this flow testing, you can use below serial number. Kindly please be noticed, due to some speical settings of the demo networks, it's expected that MV snapshot endpoint wouldn't work on other cameras on Meraki Launchpad.\n\n\n> # **SN: Q2NV-S6M5-5XG4**\n\nCopy above SN and replace the [CAMERA SERIAL] in the URL property of the Get Camera Snapshot node.",
+        "x": 600,
+        "y": 4360,
+        "wires": []
+    },
+    {
+        "id": "b028b01b80ec237f",
+        "type": "http request",
+        "z": "643264c1.c2c88c",
+        "name": "Get Camera Snapshot V1",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.meraki.com/api/v1/devices/[CAMERA SERIAL]/camera/generateSnapshot",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 610,
+        "y": 4400,
+        "wires": [
+            [
+                "8533cf17.ad1a9",
+                "abca16cd.735158"
+            ]
+        ]
+    },
+    {
+        "id": "f335ef1.725d61",
+        "type": "comment",
+        "z": "643264c1.c2c88c",
+        "name": "Camera SN for testing",
+        "info": "If you dont have an organization with a MV camera available for this flow testing, you can use below serial number. Kindly please be noticed, due to some speical settings of the demo networks, it's expected that MV snapshot endpoint wouldn't work on other cameras on Meraki Launchpad.\n\n\n> # **SN: Q2NV-S6M5-5XG4**\n\nCopy above SN and replace the [CAMERA SERIAL] in the URL property of the Get Camera Snapshot node.",
+        "x": 840,
+        "y": 3980,
+        "wires": []
+    }
+]
