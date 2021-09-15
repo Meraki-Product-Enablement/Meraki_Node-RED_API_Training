@@ -1,0 +1,862 @@
+[
+    {
+        "id": "d498a562.9939a8",
+        "type": "tab",
+        "label": "Lesson 4 - Live",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "80f88e4b.ad187",
+        "type": "comment",
+        "z": "d498a562.9939a8",
+        "name": "Cisco Meraki - Node-RED - Lesson 4",
+        "info": "# Cisco Meraki - Node-RED Workshop\nLesson 4 - 2021",
+        "x": 210,
+        "y": 60,
+        "wires": [],
+        "icon": "node-red-contrib-meraki-dashboard-api/icon.png"
+    },
+    {
+        "id": "d4dc7f01.a41ff",
+        "type": "function",
+        "z": "d498a562.9939a8",
+        "name": "Input Numbers",
+        "func": "msg.x = 1\nmsg.y = 2\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 360,
+        "y": 160,
+        "wires": [
+            [
+                "8953923d.7bf4e"
+            ]
+        ]
+    },
+    {
+        "id": "ede5b973.94de78",
+        "type": "inject",
+        "z": "d498a562.9939a8",
+        "name": "Trigger",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 160,
+        "wires": [
+            [
+                "d4dc7f01.a41ff"
+            ]
+        ]
+    },
+    {
+        "id": "7a34c486.a007dc",
+        "type": "debug",
+        "z": "d498a562.9939a8",
+        "name": "Output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "8953923d.7bf4e",
+        "type": "function",
+        "z": "d498a562.9939a8",
+        "name": "Add Numbers",
+        "func": "msg.payload = msg.x + msg.y\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 580,
+        "y": 160,
+        "wires": [
+            [
+                "7a34c486.a007dc"
+            ]
+        ]
+    },
+    {
+        "id": "28a62db8.595f02",
+        "type": "meraki-dashboard-api-v1",
+        "z": "d498a562.9939a8",
+        "service": "10fb2302.38d86d",
+        "name": "getOrganizationDevicesStatuses",
+        "selectedGroup": "",
+        "selectorAitems": [
+            "appliance",
+            "camera",
+            "cellularGateway",
+            "devices",
+            "insight",
+            "networks",
+            "organizations",
+            "sm",
+            "switch",
+            "wireless"
+        ],
+        "selectorBitems": [
+            "configure",
+            "monitor"
+        ],
+        "selectorCitems": [
+            "apiRequests",
+            "configurationChanges",
+            "devices",
+            "licenses",
+            "openapiSpec",
+            "uplinks",
+            "webhooks"
+        ],
+        "selectedGroupA": "organizations",
+        "selectedGroupB": "monitor",
+        "selectedGroupC": "devices",
+        "selectedMethod": "getOrganizationDevicesStatuses",
+        "filteredMethods": [
+            {
+                "methodTags": [
+                    "organizations",
+                    "monitor",
+                    "devices",
+                    "statuses"
+                ],
+                "methodName": "getOrganizationDevicesStatuses",
+                "parameters": [
+                    {
+                        "camelCaseName": "organizationId"
+                    },
+                    {
+                        "camelCaseName": "perPage"
+                    },
+                    {
+                        "camelCaseName": "startingAfter"
+                    },
+                    {
+                        "camelCaseName": "endingBefore"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"getOrganizationDevicesStatuses_organizationId\"><label for=\"node-input-getOrganizationDevicesStatuses_organizationId\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>organizationId <span style=\"color:red;\"> *</span></b> <i>&nbspstring</i></span></label><p></p><input type=\"text\" id=\"node-input-getOrganizationDevicesStatuses_organizationId\" placeholder=\"msg.organizationId\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesStatuses_organizationIdType\" value=\"string\" ></div><div class=\"form-row\" id=\"getOrganizationDevicesStatuses_perPage\"><label for=\"node-input-getOrganizationDevicesStatuses_perPage\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>perPage </b> <i>&nbspinteger</i></span></label><p>The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000.</p><input type=\"text\" id=\"node-input-getOrganizationDevicesStatuses_perPage\" placeholder=\"msg.perPage\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesStatuses_perPageType\" value=\"integer\" ></div><div class=\"form-row\" id=\"getOrganizationDevicesStatuses_startingAfter\"><label for=\"node-input-getOrganizationDevicesStatuses_startingAfter\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>startingAfter </b> <i>&nbspstring</i></span></label><p>A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.</p><input type=\"text\" id=\"node-input-getOrganizationDevicesStatuses_startingAfter\" placeholder=\"msg.startingAfter\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesStatuses_startingAfterType\" value=\"string\" ></div><div class=\"form-row\" id=\"getOrganizationDevicesStatuses_endingBefore\"><label for=\"node-input-getOrganizationDevicesStatuses_endingBefore\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>endingBefore </b> <i>&nbspstring</i></span></label><p>A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.</p><input type=\"text\" id=\"node-input-getOrganizationDevicesStatuses_endingBefore\" placeholder=\"msg.endingBefore\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesStatuses_endingBeforeType\" value=\"string\" ></div>",
+                "example": "[\n  [\n    {\n      \"name\": \"My AP\",\n      \"serial\": \"Q234-ABCD-5678\",\n      \"mac\": \"00:11:22:33:44:55\",\n      \"publicIp\": \"123.123.123.1\",\n      \"networkId\": \"N_24329156\",\n      \"status\": \"online\",\n      \"lastReportedAt\": \"2018-02-11T00:00:00.090210Z\",\n      \"lanIp\": \"1.2.3.4\",\n      \"gateway\": \"1.2.3.5\",\n      \"ipType\": \"dhcp\",\n      \"primaryDns\": \"8.8.8.8\",\n      \"secondaryDns\": \"8.8.4.4\"\n    }\n  ]\n]",
+                "summary": "List the status of every Meraki device in the organization"
+            },
+            {
+                "methodTags": [
+                    "organizations",
+                    "monitor",
+                    "devices",
+                    "uplinksLossAndLatency"
+                ],
+                "methodName": "getOrganizationDevicesUplinksLossAndLatency",
+                "parameters": [
+                    {
+                        "camelCaseName": "organizationId"
+                    },
+                    {
+                        "camelCaseName": "t0"
+                    },
+                    {
+                        "camelCaseName": "t1"
+                    },
+                    {
+                        "camelCaseName": "timespan"
+                    },
+                    {
+                        "camelCaseName": "uplink"
+                    },
+                    {
+                        "camelCaseName": "ip"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"getOrganizationDevicesUplinksLossAndLatency_organizationId\"><label for=\"node-input-getOrganizationDevicesUplinksLossAndLatency_organizationId\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>organizationId <span style=\"color:red;\"> *</span></b> <i>&nbspstring</i></span></label><p></p><input type=\"text\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_organizationId\" placeholder=\"msg.organizationId\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_organizationIdType\" value=\"string\" ></div><div class=\"form-row\" id=\"getOrganizationDevicesUplinksLossAndLatency_t0\"><label for=\"node-input-getOrganizationDevicesUplinksLossAndLatency_t0\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>t0 </b> <i>&nbspstring</i></span></label><p>The beginning of the timespan for the data. The maximum lookback period is 365 days from today.</p><input type=\"text\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_t0\" placeholder=\"msg.t0\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_t0Type\" value=\"string\" ></div><div class=\"form-row\" id=\"getOrganizationDevicesUplinksLossAndLatency_t1\"><label for=\"node-input-getOrganizationDevicesUplinksLossAndLatency_t1\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>t1 </b> <i>&nbspstring</i></span></label><p>The end of the timespan for the data. t1 can be a maximum of 5 minutes after t0. The latest possible time that t1 can be is 2 minutes into the past.</p><input type=\"text\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_t1\" placeholder=\"msg.t1\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_t1Type\" value=\"string\" ></div><div class=\"form-row\" id=\"getOrganizationDevicesUplinksLossAndLatency_timespan\"><label for=\"node-input-getOrganizationDevicesUplinksLossAndLatency_timespan\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>timespan </b> <i>&nbspnumber</i></span></label><p>The timespan for which the information will be fetched. If specifying timespan, do not specify parameters t0 and t1. The value must be in seconds and be less than or equal to 5 minutes. The default is 5 minutes.</p><input type=\"text\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_timespan\" placeholder=\"msg.timespan\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_timespanType\" value=\"number\" ></div><div class=\"form-row\" id=\"getOrganizationDevicesUplinksLossAndLatency_uplink\"><label for=\"node-input-getOrganizationDevicesUplinksLossAndLatency_uplink\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>uplink </b> <i>&nbspstring</i></span></label><select id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_uplink\"><option value=\"wan1\">wan1</option><option value=\"wan2\">wan2</option><option value=\"cellular\">cellular</option></select></div><div class=\"form-row\" id=\"getOrganizationDevicesUplinksLossAndLatency_ip\"><label for=\"node-input-getOrganizationDevicesUplinksLossAndLatency_ip\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>ip </b> <i>&nbspstring</i></span></label><p>Optional filter for a specific destination IP. Default will return all destination IPs.</p><input type=\"text\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_ip\" placeholder=\"msg.ip\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_ipType\" value=\"string\" ></div>",
+                "example": "[\n  [\n    {\n      \"networkId\": \"N_12345\",\n      \"serial\": \"Q2AB-CDEF-GHIJ\",\n      \"uplink\": \"wan1\",\n      \"ip\": \"8.8.8.8\",\n      \"timeSeries\": [\n        {\n          \"ts\": \"2019-01-31T18:46:13Z\",\n          \"lossPercent\": 5.3,\n          \"latencyMs\": 194.9\n        }\n      ]\n    }\n  ]\n]",
+                "summary": "Return the uplink loss and latency for every MX in the organization from at latest 2 minutes ago"
+            }
+        ],
+        "lastUpdated": "",
+        "formHtml": "",
+        "method": "getOrganizationDevicesStatuses",
+        "x": 530,
+        "y": 420,
+        "wires": [
+            [
+                "6f943164.7232d"
+            ]
+        ]
+    },
+    {
+        "id": "dd64d2f9.45163",
+        "type": "change",
+        "z": "d498a562.9939a8",
+        "name": "Flow Env Variables",
+        "rules": [
+            {
+                "t": "set",
+                "p": "organizationId",
+                "pt": "flow",
+                "to": "537758",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 340,
+        "wires": [
+            [
+                "a199cd6.4f2873"
+            ]
+        ]
+    },
+    {
+        "id": "8e6f06f7.cc97c8",
+        "type": "inject",
+        "z": "d498a562.9939a8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 240,
+        "wires": [
+            [
+                "265f086b.dabe88"
+            ]
+        ]
+    },
+    {
+        "id": "9db0899d.d937d8",
+        "type": "debug",
+        "z": "d498a562.9939a8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "265f086b.dabe88",
+        "type": "meraki-dashboard-api-v1",
+        "z": "d498a562.9939a8",
+        "service": "10fb2302.38d86d",
+        "name": "getOrganizations",
+        "selectedGroup": "",
+        "selectorAitems": [
+            "appliance",
+            "camera",
+            "cellularGateway",
+            "devices",
+            "insight",
+            "networks",
+            "organizations",
+            "sm",
+            "switch",
+            "wireless"
+        ],
+        "selectorBitems": [
+            "configure",
+            "monitor"
+        ],
+        "selectorCitems": [
+            "/",
+            "actionBatches",
+            "admins",
+            "brandingPolicies",
+            "configTemplates",
+            "devices",
+            "inventoryDevices",
+            "licenses",
+            "loginSecurity",
+            "networks",
+            "saml",
+            "samlRoles",
+            "snmp"
+        ],
+        "selectedGroupA": "organizations",
+        "selectedGroupB": "configure",
+        "selectedGroupC": "/",
+        "selectedMethod": "getOrganizations",
+        "filteredMethods": [
+            {
+                "methodTags": [
+                    "organizations",
+                    "configure"
+                ],
+                "methodName": "getOrganizations",
+                "parameters": [],
+                "formHtml": "<h4>Parameters</h4>",
+                "example": "[\n  [\n    {\n      \"id\": \"2930418\",\n      \"name\": \"My organization\",\n      \"url\": \"https://dashboard.meraki.com/o/VjjsAd/manage/organization/overview\"\n    }\n  ]\n]",
+                "summary": "List the organizations that the user has privileges on"
+            },
+            {
+                "methodTags": [
+                    "organizations",
+                    "configure"
+                ],
+                "methodName": "createOrganization",
+                "parameters": [
+                    {
+                        "camelCaseName": "createOrganization"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"createOrganization_createOrganization\"><label for=\"node-input-createOrganization_createOrganization\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>createOrganization <span style=\"color:red;\"> *</span></b> <i>&nbsp</i></span></label><p></p><textarea type=\"text\" id=\"node-input-createOrganization_createOrganization\" placeholder=\"msg.payload\" style=\"width:70%\"></textarea><input type=\"hidden\" id=\"node-input-createOrganization_createOrganizationType\" value=\"\" ></div><h5>Body Example</h5><pre> <code>{\n    \"name\": \"My organization\"\n}</code></pre>",
+                "example": "[\n  {\n    \"id\": \"2930418\",\n    \"name\": \"My organization\",\n    \"url\": \"https://dashboard.meraki.com/o/VjjsAd/manage/organization/overview\"\n  }\n]",
+                "summary": "Create a new organization"
+            },
+            {
+                "methodTags": [
+                    "organizations",
+                    "configure"
+                ],
+                "methodName": "getOrganization",
+                "parameters": [
+                    {
+                        "camelCaseName": "organizationId"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"getOrganization_organizationId\"><label for=\"node-input-getOrganization_organizationId\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>organizationId <span style=\"color:red;\"> *</span></b> <i>&nbspstring</i></span></label><p></p><input type=\"text\" id=\"node-input-getOrganization_organizationId\" placeholder=\"msg.organizationId\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganization_organizationIdType\" value=\"string\" ></div>",
+                "example": "[\n  {\n    \"id\": \"2930418\",\n    \"name\": \"My organization\",\n    \"url\": \"https://dashboard.meraki.com/o/VjjsAd/manage/organization/overview\"\n  }\n]",
+                "summary": "Return an organization"
+            },
+            {
+                "methodTags": [
+                    "organizations",
+                    "configure"
+                ],
+                "methodName": "updateOrganization",
+                "parameters": [
+                    {
+                        "camelCaseName": "organizationId"
+                    },
+                    {
+                        "camelCaseName": "updateOrganization"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"updateOrganization_organizationId\"><label for=\"node-input-updateOrganization_organizationId\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>organizationId <span style=\"color:red;\"> *</span></b> <i>&nbspstring</i></span></label><p></p><input type=\"text\" id=\"node-input-updateOrganization_organizationId\" placeholder=\"msg.organizationId\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-updateOrganization_organizationIdType\" value=\"string\" ></div><div class=\"form-row\" id=\"updateOrganization_updateOrganization\"><label for=\"node-input-updateOrganization_updateOrganization\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>updateOrganization </b> <i>&nbsp</i></span></label><p></p><textarea type=\"text\" id=\"node-input-updateOrganization_updateOrganization\" placeholder=\"msg.payload\" style=\"width:70%\"></textarea><input type=\"hidden\" id=\"node-input-updateOrganization_updateOrganizationType\" value=\"\" ></div><h5>Body Example</h5><pre> <code>{\n    \"name\": \"My organization\"\n}</code></pre>",
+                "example": "[\n  {\n    \"id\": \"2930418\",\n    \"name\": \"My organization\",\n    \"url\": \"https://dashboard.meraki.com/o/VjjsAd/manage/organization/overview\"\n  }\n]",
+                "summary": "Update an organization"
+            },
+            {
+                "methodTags": [
+                    "organizations",
+                    "configure"
+                ],
+                "methodName": "deleteOrganization",
+                "parameters": [
+                    {
+                        "camelCaseName": "organizationId"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"deleteOrganization_organizationId\"><label for=\"node-input-deleteOrganization_organizationId\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>organizationId <span style=\"color:red;\"> *</span></b> <i>&nbspstring</i></span></label><p></p><input type=\"text\" id=\"node-input-deleteOrganization_organizationId\" placeholder=\"msg.organizationId\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-deleteOrganization_organizationIdType\" value=\"string\" ></div>",
+                "example": "[]",
+                "summary": "Delete an organization"
+            },
+            {
+                "methodTags": [
+                    "organizations",
+                    "configure"
+                ],
+                "methodName": "claimIntoOrganization",
+                "parameters": [
+                    {
+                        "camelCaseName": "organizationId"
+                    },
+                    {
+                        "camelCaseName": "claimIntoOrganization"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"claimIntoOrganization_organizationId\"><label for=\"node-input-claimIntoOrganization_organizationId\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>organizationId <span style=\"color:red;\"> *</span></b> <i>&nbspstring</i></span></label><p></p><input type=\"text\" id=\"node-input-claimIntoOrganization_organizationId\" placeholder=\"msg.organizationId\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-claimIntoOrganization_organizationIdType\" value=\"string\" ></div><div class=\"form-row\" id=\"claimIntoOrganization_claimIntoOrganization\"><label for=\"node-input-claimIntoOrganization_claimIntoOrganization\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>claimIntoOrganization </b> <i>&nbsp</i></span></label><p></p><textarea type=\"text\" id=\"node-input-claimIntoOrganization_claimIntoOrganization\" placeholder=\"msg.payload\" style=\"width:70%\"></textarea><input type=\"hidden\" id=\"node-input-claimIntoOrganization_claimIntoOrganizationType\" value=\"\" ></div><h5>Body Example</h5><pre> <code>{\n    \"orders\": [\n        \"4CXXXXXXX\"\n    ],\n    \"serials\": [\n        \"Q234-ABCD-5678\"\n    ],\n    \"licenses\": [\n        {\n            \"key\": \"Z2XXXXXXXXXX\",\n            \"mode\": \"addDevices\"\n        }\n    ]\n}</code></pre>",
+                "example": "[\n  {\n    \"orders\": [\n      \"4CXXXXXXX\"\n    ],\n    \"serials\": [\n      \"Q234-ABCD-5678\"\n    ],\n    \"licenses\": [\n      {\n        \"key\": \"Z2XXXXXXXXXX\",\n        \"mode\": \"addDevices\"\n      }\n    ]\n  }\n]",
+                "summary": "Claim a list of devices licenses and/or orders into an organization. When claiming by order all devices and licenses in the order will be claimed; licenses will be added to the organization and devices will be placed in the organizations inventory."
+            },
+            {
+                "methodTags": [
+                    "organizations",
+                    "configure"
+                ],
+                "methodName": "cloneOrganization",
+                "parameters": [
+                    {
+                        "camelCaseName": "organizationId"
+                    },
+                    {
+                        "camelCaseName": "cloneOrganization"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"cloneOrganization_organizationId\"><label for=\"node-input-cloneOrganization_organizationId\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>organizationId <span style=\"color:red;\"> *</span></b> <i>&nbspstring</i></span></label><p></p><input type=\"text\" id=\"node-input-cloneOrganization_organizationId\" placeholder=\"msg.organizationId\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-cloneOrganization_organizationIdType\" value=\"string\" ></div><div class=\"form-row\" id=\"cloneOrganization_cloneOrganization\"><label for=\"node-input-cloneOrganization_cloneOrganization\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>cloneOrganization <span style=\"color:red;\"> *</span></b> <i>&nbsp</i></span></label><p></p><textarea type=\"text\" id=\"node-input-cloneOrganization_cloneOrganization\" placeholder=\"msg.payload\" style=\"width:70%\"></textarea><input type=\"hidden\" id=\"node-input-cloneOrganization_cloneOrganizationType\" value=\"\" ></div><h5>Body Example</h5><pre> <code>{\n    \"name\": \"My organization\"\n}</code></pre>",
+                "example": "[\n  {\n    \"id\": \"2930418\",\n    \"name\": \"My organization\",\n    \"url\": \"https://dashboard.meraki.com/o/VjjsAd/manage/organization/overview\"\n  }\n]",
+                "summary": "Create a new organization by cloning the addressed organization"
+            }
+        ],
+        "lastUpdated": "",
+        "formHtml": "",
+        "method": "getOrganizations",
+        "x": 390,
+        "y": 240,
+        "wires": [
+            [
+                "9db0899d.d937d8"
+            ]
+        ]
+    },
+    {
+        "id": "46ea05fa.c4c9dc",
+        "type": "inject",
+        "z": "d498a562.9939a8",
+        "name": "Trigger",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 340,
+        "wires": [
+            [
+                "dd64d2f9.45163"
+            ]
+        ]
+    },
+    {
+        "id": "a199cd6.4f2873",
+        "type": "debug",
+        "z": "d498a562.9939a8",
+        "name": "Output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "d47d2131.48bfa",
+        "type": "inject",
+        "z": "d498a562.9939a8",
+        "name": "Trigger",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 420,
+        "wires": [
+            [
+                "360f191c.969a26"
+            ]
+        ]
+    },
+    {
+        "id": "6f943164.7232d",
+        "type": "debug",
+        "z": "d498a562.9939a8",
+        "name": "Output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "360f191c.969a26",
+        "type": "change",
+        "z": "d498a562.9939a8",
+        "name": "Set Org Id",
+        "rules": [
+            {
+                "t": "set",
+                "p": "organizationId",
+                "pt": "msg",
+                "to": "organizationId",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 420,
+        "wires": [
+            [
+                "28a62db8.595f02"
+            ]
+        ]
+    },
+    {
+        "id": "2ff3eb7.c574d14",
+        "type": "meraki-dashboard-api-v1",
+        "z": "d498a562.9939a8",
+        "service": "10fb2302.38d86d",
+        "name": "getOrganizationDevicesStatuses",
+        "selectedGroup": "",
+        "selectorAitems": [
+            "appliance",
+            "camera",
+            "cellularGateway",
+            "devices",
+            "insight",
+            "networks",
+            "organizations",
+            "sm",
+            "switch",
+            "wireless"
+        ],
+        "selectorBitems": [
+            "configure",
+            "monitor"
+        ],
+        "selectorCitems": [
+            "apiRequests",
+            "configurationChanges",
+            "devices",
+            "licenses",
+            "openapiSpec",
+            "uplinks",
+            "webhooks"
+        ],
+        "selectedGroupA": "organizations",
+        "selectedGroupB": "monitor",
+        "selectedGroupC": "devices",
+        "selectedMethod": "getOrganizationDevicesStatuses",
+        "filteredMethods": [
+            {
+                "methodTags": [
+                    "organizations",
+                    "monitor",
+                    "devices",
+                    "statuses"
+                ],
+                "methodName": "getOrganizationDevicesStatuses",
+                "parameters": [
+                    {
+                        "camelCaseName": "organizationId"
+                    },
+                    {
+                        "camelCaseName": "perPage"
+                    },
+                    {
+                        "camelCaseName": "startingAfter"
+                    },
+                    {
+                        "camelCaseName": "endingBefore"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"getOrganizationDevicesStatuses_organizationId\"><label for=\"node-input-getOrganizationDevicesStatuses_organizationId\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>organizationId <span style=\"color:red;\"> *</span></b> <i>&nbspstring</i></span></label><p></p><input type=\"text\" id=\"node-input-getOrganizationDevicesStatuses_organizationId\" placeholder=\"msg.organizationId\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesStatuses_organizationIdType\" value=\"string\" ></div><div class=\"form-row\" id=\"getOrganizationDevicesStatuses_perPage\"><label for=\"node-input-getOrganizationDevicesStatuses_perPage\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>perPage </b> <i>&nbspinteger</i></span></label><p>The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000.</p><input type=\"text\" id=\"node-input-getOrganizationDevicesStatuses_perPage\" placeholder=\"msg.perPage\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesStatuses_perPageType\" value=\"integer\" ></div><div class=\"form-row\" id=\"getOrganizationDevicesStatuses_startingAfter\"><label for=\"node-input-getOrganizationDevicesStatuses_startingAfter\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>startingAfter </b> <i>&nbspstring</i></span></label><p>A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.</p><input type=\"text\" id=\"node-input-getOrganizationDevicesStatuses_startingAfter\" placeholder=\"msg.startingAfter\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesStatuses_startingAfterType\" value=\"string\" ></div><div class=\"form-row\" id=\"getOrganizationDevicesStatuses_endingBefore\"><label for=\"node-input-getOrganizationDevicesStatuses_endingBefore\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>endingBefore </b> <i>&nbspstring</i></span></label><p>A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.</p><input type=\"text\" id=\"node-input-getOrganizationDevicesStatuses_endingBefore\" placeholder=\"msg.endingBefore\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesStatuses_endingBeforeType\" value=\"string\" ></div>",
+                "example": "[\n  [\n    {\n      \"name\": \"My AP\",\n      \"serial\": \"Q234-ABCD-5678\",\n      \"mac\": \"00:11:22:33:44:55\",\n      \"publicIp\": \"123.123.123.1\",\n      \"networkId\": \"N_24329156\",\n      \"status\": \"online\",\n      \"lastReportedAt\": \"2018-02-11T00:00:00.090210Z\",\n      \"lanIp\": \"1.2.3.4\",\n      \"gateway\": \"1.2.3.5\",\n      \"ipType\": \"dhcp\",\n      \"primaryDns\": \"8.8.8.8\",\n      \"secondaryDns\": \"8.8.4.4\"\n    }\n  ]\n]",
+                "summary": "List the status of every Meraki device in the organization"
+            },
+            {
+                "methodTags": [
+                    "organizations",
+                    "monitor",
+                    "devices",
+                    "uplinksLossAndLatency"
+                ],
+                "methodName": "getOrganizationDevicesUplinksLossAndLatency",
+                "parameters": [
+                    {
+                        "camelCaseName": "organizationId"
+                    },
+                    {
+                        "camelCaseName": "t0"
+                    },
+                    {
+                        "camelCaseName": "t1"
+                    },
+                    {
+                        "camelCaseName": "timespan"
+                    },
+                    {
+                        "camelCaseName": "uplink"
+                    },
+                    {
+                        "camelCaseName": "ip"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"getOrganizationDevicesUplinksLossAndLatency_organizationId\"><label for=\"node-input-getOrganizationDevicesUplinksLossAndLatency_organizationId\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>organizationId <span style=\"color:red;\"> *</span></b> <i>&nbspstring</i></span></label><p></p><input type=\"text\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_organizationId\" placeholder=\"msg.organizationId\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_organizationIdType\" value=\"string\" ></div><div class=\"form-row\" id=\"getOrganizationDevicesUplinksLossAndLatency_t0\"><label for=\"node-input-getOrganizationDevicesUplinksLossAndLatency_t0\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>t0 </b> <i>&nbspstring</i></span></label><p>The beginning of the timespan for the data. The maximum lookback period is 365 days from today.</p><input type=\"text\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_t0\" placeholder=\"msg.t0\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_t0Type\" value=\"string\" ></div><div class=\"form-row\" id=\"getOrganizationDevicesUplinksLossAndLatency_t1\"><label for=\"node-input-getOrganizationDevicesUplinksLossAndLatency_t1\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>t1 </b> <i>&nbspstring</i></span></label><p>The end of the timespan for the data. t1 can be a maximum of 5 minutes after t0. The latest possible time that t1 can be is 2 minutes into the past.</p><input type=\"text\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_t1\" placeholder=\"msg.t1\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_t1Type\" value=\"string\" ></div><div class=\"form-row\" id=\"getOrganizationDevicesUplinksLossAndLatency_timespan\"><label for=\"node-input-getOrganizationDevicesUplinksLossAndLatency_timespan\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>timespan </b> <i>&nbspnumber</i></span></label><p>The timespan for which the information will be fetched. If specifying timespan, do not specify parameters t0 and t1. The value must be in seconds and be less than or equal to 5 minutes. The default is 5 minutes.</p><input type=\"text\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_timespan\" placeholder=\"msg.timespan\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_timespanType\" value=\"number\" ></div><div class=\"form-row\" id=\"getOrganizationDevicesUplinksLossAndLatency_uplink\"><label for=\"node-input-getOrganizationDevicesUplinksLossAndLatency_uplink\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>uplink </b> <i>&nbspstring</i></span></label><select id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_uplink\"><option value=\"wan1\">wan1</option><option value=\"wan2\">wan2</option><option value=\"cellular\">cellular</option></select></div><div class=\"form-row\" id=\"getOrganizationDevicesUplinksLossAndLatency_ip\"><label for=\"node-input-getOrganizationDevicesUplinksLossAndLatency_ip\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>ip </b> <i>&nbspstring</i></span></label><p>Optional filter for a specific destination IP. Default will return all destination IPs.</p><input type=\"text\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_ip\" placeholder=\"msg.ip\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevicesUplinksLossAndLatency_ipType\" value=\"string\" ></div>",
+                "example": "[\n  [\n    {\n      \"networkId\": \"N_12345\",\n      \"serial\": \"Q2AB-CDEF-GHIJ\",\n      \"uplink\": \"wan1\",\n      \"ip\": \"8.8.8.8\",\n      \"timeSeries\": [\n        {\n          \"ts\": \"2019-01-31T18:46:13Z\",\n          \"lossPercent\": 5.3,\n          \"latencyMs\": 194.9\n        }\n      ]\n    }\n  ]\n]",
+                "summary": "Return the uplink loss and latency for every MX in the organization from at latest 2 minutes ago"
+            }
+        ],
+        "lastUpdated": "",
+        "formHtml": "",
+        "method": "getOrganizationDevicesStatuses",
+        "x": 530,
+        "y": 540,
+        "wires": [
+            [
+                "b7dbc1e7.58822"
+            ]
+        ]
+    },
+    {
+        "id": "d5bac1c2.c03d6",
+        "type": "inject",
+        "z": "d498a562.9939a8",
+        "name": "Trigger",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 540,
+        "wires": [
+            [
+                "8d007f24.4504b"
+            ]
+        ]
+    },
+    {
+        "id": "c953b23c.62fa",
+        "type": "debug",
+        "z": "d498a562.9939a8",
+        "name": "Output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 470,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "8d007f24.4504b",
+        "type": "change",
+        "z": "d498a562.9939a8",
+        "name": "Set Org Id",
+        "rules": [
+            {
+                "t": "set",
+                "p": "organizationId",
+                "pt": "msg",
+                "to": "organizationId",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 540,
+        "wires": [
+            [
+                "2ff3eb7.c574d14"
+            ]
+        ]
+    },
+    {
+        "id": "b7dbc1e7.58822",
+        "type": "function",
+        "z": "d498a562.9939a8",
+        "name": "Total Num Devices",
+        "func": "msg.numDevices = msg.payload.length\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 790,
+        "y": 540,
+        "wires": [
+            [
+                "4e9956e9.375178"
+            ]
+        ]
+    },
+    {
+        "id": "4e9956e9.375178",
+        "type": "function",
+        "z": "d498a562.9939a8",
+        "name": "Online Devices",
+        "func": "msg.onlineDevices = msg.payload.filter(\n                        device => device.status == \"online\"\n                    )\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1000,
+        "y": 540,
+        "wires": [
+            [
+                "2eb2b5b0.b2096a"
+            ]
+        ]
+    },
+    {
+        "id": "2eb2b5b0.b2096a",
+        "type": "function",
+        "z": "d498a562.9939a8",
+        "name": "Offline Devices",
+        "func": "msg.offlineDevices = msg.payload.filter(\n                        device => device.status == \"offline\"\n                    )\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1200,
+        "y": 540,
+        "wires": [
+            [
+                "d2c38db.02aac7"
+            ]
+        ]
+    },
+    {
+        "id": "d2c38db.02aac7",
+        "type": "link out",
+        "z": "d498a562.9939a8",
+        "name": "",
+        "links": [
+            "748c04a.a5711fc"
+        ],
+        "x": 1335,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "748c04a.a5711fc",
+        "type": "link in",
+        "z": "d498a562.9939a8",
+        "name": "",
+        "links": [
+            "d2c38db.02aac7"
+        ],
+        "x": 95,
+        "y": 660,
+        "wires": [
+            [
+                "66bcbada.49d234"
+            ]
+        ]
+    },
+    {
+        "id": "66bcbada.49d234",
+        "type": "function",
+        "z": "d498a562.9939a8",
+        "name": "Devices Message",
+        "func": "msg.payload = \"Total: \" + msg.numDevices +\n                \" - Online: \" + msg.onlineDevices.length +\n                \" / Offline: \" + msg.offlineDevices.length\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 280,
+        "y": 660,
+        "wires": [
+            [
+                "c953b23c.62fa"
+            ]
+        ]
+    },
+    {
+        "id": "9b3e317c.a0c89",
+        "type": "comment",
+        "z": "d498a562.9939a8",
+        "name": "Verson 1.1",
+        "info": "Version 1.1\nLast updated on Sept. 15 2021",
+        "x": 1460,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "10fb2302.38d86d",
+        "type": "meraki-dashboard-api-v1-service",
+        "host": "https://api.meraki.com/api/v1",
+        "secureApiKeyHeaderOrQueryName": "X-Cisco-Meraki-API-Key",
+        "name": "Demo Meraki"
+    }
+]
