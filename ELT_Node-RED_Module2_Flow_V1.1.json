@@ -1,0 +1,679 @@
+[
+    {
+        "id": "6340dfbe.e5963",
+        "type": "tab",
+        "label": "Lesson 2 - Live",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "aca46c37.30a05",
+        "type": "comment",
+        "z": "6340dfbe.e5963",
+        "name": "Cisco Meraki - Node-RED - Lesson 2",
+        "info": "# Cisco Meraki - Node-RED Workshop\nLesson 2 - 2021",
+        "x": 210,
+        "y": 60,
+        "wires": [],
+        "icon": "node-red-contrib-meraki-dashboard-api/icon.png"
+    },
+    {
+        "id": "e82d444f.aaf2e8",
+        "type": "meraki-dashboard-api-v1",
+        "z": "6340dfbe.e5963",
+        "service": "10fb2302.38d86d",
+        "name": "getOrganizations",
+        "selectedGroup": "",
+        "selectorAitems": [
+            "appliance",
+            "camera",
+            "cellularGateway",
+            "devices",
+            "insight",
+            "networks",
+            "organizations",
+            "sm",
+            "switch",
+            "wireless"
+        ],
+        "selectorBitems": [
+            "configure",
+            "monitor"
+        ],
+        "selectorCitems": [
+            "/",
+            "actionBatches",
+            "admins",
+            "brandingPolicies",
+            "configTemplates",
+            "devices",
+            "inventoryDevices",
+            "licenses",
+            "loginSecurity",
+            "networks",
+            "saml",
+            "samlRoles",
+            "snmp"
+        ],
+        "selectedGroupA": "organizations",
+        "selectedGroupB": "configure",
+        "selectedGroupC": "/",
+        "selectedMethod": "getOrganizations",
+        "filteredMethods": [
+            {
+                "methodTags": [
+                    "organizations",
+                    "configure"
+                ],
+                "methodName": "getOrganizations",
+                "parameters": [],
+                "formHtml": "<h4>Parameters</h4>",
+                "example": "[\n  [\n    {\n      \"id\": \"2930418\",\n      \"name\": \"My organization\",\n      \"url\": \"https://dashboard.meraki.com/o/VjjsAd/manage/organization/overview\"\n    }\n  ]\n]",
+                "summary": "List the organizations that the user has privileges on"
+            },
+            {
+                "methodTags": [
+                    "organizations",
+                    "configure"
+                ],
+                "methodName": "createOrganization",
+                "parameters": [
+                    {
+                        "camelCaseName": "createOrganization"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"createOrganization_createOrganization\"><label for=\"node-input-createOrganization_createOrganization\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>createOrganization <span style=\"color:red;\"> *</span></b> <i>&nbsp</i></span></label><p></p><textarea type=\"text\" id=\"node-input-createOrganization_createOrganization\" placeholder=\"msg.payload\" style=\"width:70%\"></textarea><input type=\"hidden\" id=\"node-input-createOrganization_createOrganizationType\" value=\"\" ></div><h5>Body Example</h5><pre> <code>{\n    \"name\": \"My organization\"\n}</code></pre>",
+                "example": "[\n  {\n    \"id\": \"2930418\",\n    \"name\": \"My organization\",\n    \"url\": \"https://dashboard.meraki.com/o/VjjsAd/manage/organization/overview\"\n  }\n]",
+                "summary": "Create a new organization"
+            },
+            {
+                "methodTags": [
+                    "organizations",
+                    "configure"
+                ],
+                "methodName": "getOrganization",
+                "parameters": [
+                    {
+                        "camelCaseName": "organizationId"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"getOrganization_organizationId\"><label for=\"node-input-getOrganization_organizationId\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>organizationId <span style=\"color:red;\"> *</span></b> <i>&nbspstring</i></span></label><p></p><input type=\"text\" id=\"node-input-getOrganization_organizationId\" placeholder=\"msg.organizationId\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganization_organizationIdType\" value=\"string\" ></div>",
+                "example": "[\n  {\n    \"id\": \"2930418\",\n    \"name\": \"My organization\",\n    \"url\": \"https://dashboard.meraki.com/o/VjjsAd/manage/organization/overview\"\n  }\n]",
+                "summary": "Return an organization"
+            },
+            {
+                "methodTags": [
+                    "organizations",
+                    "configure"
+                ],
+                "methodName": "updateOrganization",
+                "parameters": [
+                    {
+                        "camelCaseName": "organizationId"
+                    },
+                    {
+                        "camelCaseName": "updateOrganization"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"updateOrganization_organizationId\"><label for=\"node-input-updateOrganization_organizationId\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>organizationId <span style=\"color:red;\"> *</span></b> <i>&nbspstring</i></span></label><p></p><input type=\"text\" id=\"node-input-updateOrganization_organizationId\" placeholder=\"msg.organizationId\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-updateOrganization_organizationIdType\" value=\"string\" ></div><div class=\"form-row\" id=\"updateOrganization_updateOrganization\"><label for=\"node-input-updateOrganization_updateOrganization\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>updateOrganization </b> <i>&nbsp</i></span></label><p></p><textarea type=\"text\" id=\"node-input-updateOrganization_updateOrganization\" placeholder=\"msg.payload\" style=\"width:70%\"></textarea><input type=\"hidden\" id=\"node-input-updateOrganization_updateOrganizationType\" value=\"\" ></div><h5>Body Example</h5><pre> <code>{\n    \"name\": \"My organization\"\n}</code></pre>",
+                "example": "[\n  {\n    \"id\": \"2930418\",\n    \"name\": \"My organization\",\n    \"url\": \"https://dashboard.meraki.com/o/VjjsAd/manage/organization/overview\"\n  }\n]",
+                "summary": "Update an organization"
+            },
+            {
+                "methodTags": [
+                    "organizations",
+                    "configure"
+                ],
+                "methodName": "deleteOrganization",
+                "parameters": [
+                    {
+                        "camelCaseName": "organizationId"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"deleteOrganization_organizationId\"><label for=\"node-input-deleteOrganization_organizationId\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>organizationId <span style=\"color:red;\"> *</span></b> <i>&nbspstring</i></span></label><p></p><input type=\"text\" id=\"node-input-deleteOrganization_organizationId\" placeholder=\"msg.organizationId\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-deleteOrganization_organizationIdType\" value=\"string\" ></div>",
+                "example": "[]",
+                "summary": "Delete an organization"
+            },
+            {
+                "methodTags": [
+                    "organizations",
+                    "configure"
+                ],
+                "methodName": "claimIntoOrganization",
+                "parameters": [
+                    {
+                        "camelCaseName": "organizationId"
+                    },
+                    {
+                        "camelCaseName": "claimIntoOrganization"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"claimIntoOrganization_organizationId\"><label for=\"node-input-claimIntoOrganization_organizationId\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>organizationId <span style=\"color:red;\"> *</span></b> <i>&nbspstring</i></span></label><p></p><input type=\"text\" id=\"node-input-claimIntoOrganization_organizationId\" placeholder=\"msg.organizationId\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-claimIntoOrganization_organizationIdType\" value=\"string\" ></div><div class=\"form-row\" id=\"claimIntoOrganization_claimIntoOrganization\"><label for=\"node-input-claimIntoOrganization_claimIntoOrganization\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>claimIntoOrganization </b> <i>&nbsp</i></span></label><p></p><textarea type=\"text\" id=\"node-input-claimIntoOrganization_claimIntoOrganization\" placeholder=\"msg.payload\" style=\"width:70%\"></textarea><input type=\"hidden\" id=\"node-input-claimIntoOrganization_claimIntoOrganizationType\" value=\"\" ></div><h5>Body Example</h5><pre> <code>{\n    \"orders\": [\n        \"4CXXXXXXX\"\n    ],\n    \"serials\": [\n        \"Q234-ABCD-5678\"\n    ],\n    \"licenses\": [\n        {\n            \"key\": \"Z2XXXXXXXXXX\",\n            \"mode\": \"addDevices\"\n        }\n    ]\n}</code></pre>",
+                "example": "[\n  {\n    \"orders\": [\n      \"4CXXXXXXX\"\n    ],\n    \"serials\": [\n      \"Q234-ABCD-5678\"\n    ],\n    \"licenses\": [\n      {\n        \"key\": \"Z2XXXXXXXXXX\",\n        \"mode\": \"addDevices\"\n      }\n    ]\n  }\n]",
+                "summary": "Claim a list of devices licenses and/or orders into an organization. When claiming by order all devices and licenses in the order will be claimed; licenses will be added to the organization and devices will be placed in the organizations inventory."
+            },
+            {
+                "methodTags": [
+                    "organizations",
+                    "configure"
+                ],
+                "methodName": "cloneOrganization",
+                "parameters": [
+                    {
+                        "camelCaseName": "organizationId"
+                    },
+                    {
+                        "camelCaseName": "cloneOrganization"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"cloneOrganization_organizationId\"><label for=\"node-input-cloneOrganization_organizationId\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>organizationId <span style=\"color:red;\"> *</span></b> <i>&nbspstring</i></span></label><p></p><input type=\"text\" id=\"node-input-cloneOrganization_organizationId\" placeholder=\"msg.organizationId\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-cloneOrganization_organizationIdType\" value=\"string\" ></div><div class=\"form-row\" id=\"cloneOrganization_cloneOrganization\"><label for=\"node-input-cloneOrganization_cloneOrganization\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>cloneOrganization <span style=\"color:red;\"> *</span></b> <i>&nbsp</i></span></label><p></p><textarea type=\"text\" id=\"node-input-cloneOrganization_cloneOrganization\" placeholder=\"msg.payload\" style=\"width:70%\"></textarea><input type=\"hidden\" id=\"node-input-cloneOrganization_cloneOrganizationType\" value=\"\" ></div><h5>Body Example</h5><pre> <code>{\n    \"name\": \"My organization\"\n}</code></pre>",
+                "example": "[\n  {\n    \"id\": \"2930418\",\n    \"name\": \"My organization\",\n    \"url\": \"https://dashboard.meraki.com/o/VjjsAd/manage/organization/overview\"\n  }\n]",
+                "summary": "Create a new organization by cloning the addressed organization"
+            }
+        ],
+        "lastUpdated": "",
+        "formHtml": "",
+        "method": "getOrganizations",
+        "x": 366,
+        "y": 160,
+        "wires": [
+            [
+                "301c2e3f.53bda2"
+            ]
+        ]
+    },
+    {
+        "id": "c7709108.2bc57",
+        "type": "inject",
+        "z": "6340dfbe.e5963",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 126,
+        "y": 160,
+        "wires": [
+            [
+                "e82d444f.aaf2e8"
+            ]
+        ]
+    },
+    {
+        "id": "301c2e3f.53bda2",
+        "type": "debug",
+        "z": "6340dfbe.e5963",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 616,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "c34c5668.7dd978",
+        "type": "meraki-dashboard-api-v1",
+        "z": "6340dfbe.e5963",
+        "service": "10fb2302.38d86d",
+        "name": "getOrganizationDevices",
+        "selectedGroup": "",
+        "selectorAitems": [
+            "appliance",
+            "camera",
+            "cellularGateway",
+            "devices",
+            "insight",
+            "networks",
+            "organizations",
+            "sm",
+            "switch",
+            "wireless"
+        ],
+        "selectorBitems": [
+            "configure",
+            "monitor"
+        ],
+        "selectorCitems": [
+            "/",
+            "actionBatches",
+            "admins",
+            "brandingPolicies",
+            "configTemplates",
+            "devices",
+            "inventoryDevices",
+            "licenses",
+            "loginSecurity",
+            "networks",
+            "saml",
+            "samlRoles",
+            "snmp"
+        ],
+        "selectedGroupA": "organizations",
+        "selectedGroupB": "configure",
+        "selectedGroupC": "devices",
+        "selectedMethod": "getOrganizationDevices",
+        "filteredMethods": [
+            {
+                "methodTags": [
+                    "organizations",
+                    "configure",
+                    "devices"
+                ],
+                "methodName": "getOrganizationDevices",
+                "parameters": [
+                    {
+                        "camelCaseName": "organizationId"
+                    },
+                    {
+                        "camelCaseName": "perPage"
+                    },
+                    {
+                        "camelCaseName": "startingAfter"
+                    },
+                    {
+                        "camelCaseName": "endingBefore"
+                    },
+                    {
+                        "camelCaseName": "configurationUpdatedAfter"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"getOrganizationDevices_organizationId\"><label for=\"node-input-getOrganizationDevices_organizationId\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>organizationId <span style=\"color:red;\"> *</span></b> <i>&nbspstring</i></span></label><p></p><input type=\"text\" id=\"node-input-getOrganizationDevices_organizationId\" placeholder=\"msg.organizationId\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevices_organizationIdType\" value=\"string\" ></div><div class=\"form-row\" id=\"getOrganizationDevices_perPage\"><label for=\"node-input-getOrganizationDevices_perPage\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>perPage </b> <i>&nbspinteger</i></span></label><p>The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000.</p><input type=\"text\" id=\"node-input-getOrganizationDevices_perPage\" placeholder=\"msg.perPage\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevices_perPageType\" value=\"integer\" ></div><div class=\"form-row\" id=\"getOrganizationDevices_startingAfter\"><label for=\"node-input-getOrganizationDevices_startingAfter\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>startingAfter </b> <i>&nbspstring</i></span></label><p>A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.</p><input type=\"text\" id=\"node-input-getOrganizationDevices_startingAfter\" placeholder=\"msg.startingAfter\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevices_startingAfterType\" value=\"string\" ></div><div class=\"form-row\" id=\"getOrganizationDevices_endingBefore\"><label for=\"node-input-getOrganizationDevices_endingBefore\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>endingBefore </b> <i>&nbspstring</i></span></label><p>A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.</p><input type=\"text\" id=\"node-input-getOrganizationDevices_endingBefore\" placeholder=\"msg.endingBefore\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevices_endingBeforeType\" value=\"string\" ></div><div class=\"form-row\" id=\"getOrganizationDevices_configurationUpdatedAfter\"><label for=\"node-input-getOrganizationDevices_configurationUpdatedAfter\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>configurationUpdatedAfter </b> <i>&nbspstring</i></span></label><p>Filter results by whether or not the device's configuration has been updated after the given timestamp</p><input type=\"text\" id=\"node-input-getOrganizationDevices_configurationUpdatedAfter\" placeholder=\"msg.configurationUpdatedAfter\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getOrganizationDevices_configurationUpdatedAfterType\" value=\"string\" ></div>",
+                "example": "[\n  [\n    {\n      \"name\": \"My AP\",\n      \"lat\": 37.4180951010362,\n      \"lng\": -122.098531723022,\n      \"address\": \"1600 Pennsylvania Ave\",\n      \"notes\": \"My AP's note\",\n      \"tags\": [\n        \"recently-added\"\n      ],\n      \"networkId\": \"N_24329156\",\n      \"serial\": \"Q234-ABCD-5678\",\n      \"model\": \"MR34\",\n      \"mac\": \"00:11:22:33:44:55\",\n      \"lanIp\": \"1.2.3.4\",\n      \"firmware\": \"wireless-25-14\"\n    }\n  ]\n]",
+                "summary": "List the devices in an organization"
+            }
+        ],
+        "currentParams": [
+            {
+                "methodName": "getOrganizationDevices",
+                "camelCaseName": "organizationId",
+                "type": "str",
+                "value": ""
+            }
+        ],
+        "lastUpdated": 1617184199450,
+        "storedParams": [
+            {
+                "methodName": "getOrganizationDevices",
+                "camelCaseName": "organizationId",
+                "type": "str",
+                "value": ""
+            }
+        ],
+        "formHtml": "",
+        "method": "getOrganizationDevices",
+        "x": 546,
+        "y": 340,
+        "wires": [
+            [
+                "831286b2.f59928"
+            ]
+        ]
+    },
+    {
+        "id": "b1b84686.1ed648",
+        "type": "inject",
+        "z": "6340dfbe.e5963",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 126,
+        "y": 340,
+        "wires": [
+            [
+                "5f2a6f01.da8eb"
+            ]
+        ]
+    },
+    {
+        "id": "6a7ada31.b36c34",
+        "type": "change",
+        "z": "6340dfbe.e5963",
+        "name": "Flow Env Variables",
+        "rules": [
+            {
+                "t": "set",
+                "p": "organizationId",
+                "pt": "flow",
+                "to": "537758",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 374,
+        "y": 240,
+        "wires": [
+            [
+                "8504d16c.13378"
+            ]
+        ]
+    },
+    {
+        "id": "5ab20d03.874684",
+        "type": "inject",
+        "z": "6340dfbe.e5963",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 124,
+        "y": 240,
+        "wires": [
+            [
+                "6a7ada31.b36c34"
+            ]
+        ]
+    },
+    {
+        "id": "8504d16c.13378",
+        "type": "debug",
+        "z": "6340dfbe.e5963",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 614,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "5f2a6f01.da8eb",
+        "type": "change",
+        "z": "6340dfbe.e5963",
+        "name": "Set Org Id",
+        "rules": [
+            {
+                "t": "set",
+                "p": "organizationId",
+                "pt": "msg",
+                "to": "organizationId",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 306,
+        "y": 340,
+        "wires": [
+            [
+                "c34c5668.7dd978"
+            ]
+        ]
+    },
+    {
+        "id": "831286b2.f59928",
+        "type": "split",
+        "z": "6340dfbe.e5963",
+        "name": "Split Devices",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 786,
+        "y": 340,
+        "wires": [
+            [
+                "2d23fde3.09d0d2"
+            ]
+        ]
+    },
+    {
+        "id": "2d23fde3.09d0d2",
+        "type": "change",
+        "z": "6340dfbe.e5963",
+        "name": "Set Serial",
+        "rules": [
+            {
+                "t": "set",
+                "p": "serial",
+                "pt": "msg",
+                "to": "payload.serial",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 976,
+        "y": 340,
+        "wires": [
+            [
+                "f90f6cae.83726"
+            ]
+        ]
+    },
+    {
+        "id": "f90f6cae.83726",
+        "type": "switch",
+        "z": "6340dfbe.e5963",
+        "name": "Check Model",
+        "property": "payload.model",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "MX",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1146,
+        "y": 340,
+        "wires": [
+            [
+                "22d17d23.3054d2"
+            ]
+        ]
+    },
+    {
+        "id": "627cf56d.3d9f1c",
+        "type": "delay",
+        "z": "6340dfbe.e5963",
+        "name": "Meraki Rate Limit",
+        "pauseType": "rate",
+        "timeout": "0.2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 306,
+        "y": 440,
+        "wires": [
+            [
+                "89536490.ee43e8"
+            ]
+        ]
+    },
+    {
+        "id": "fbc31cc1.65ce2",
+        "type": "link in",
+        "z": "6340dfbe.e5963",
+        "name": "",
+        "links": [
+            "22d17d23.3054d2"
+        ],
+        "x": 101,
+        "y": 440,
+        "wires": [
+            [
+                "627cf56d.3d9f1c"
+            ]
+        ]
+    },
+    {
+        "id": "3aabd346.ee403c",
+        "type": "debug",
+        "z": "6340dfbe.e5963",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 826,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "89536490.ee43e8",
+        "type": "meraki-dashboard-api-v1",
+        "z": "6340dfbe.e5963",
+        "service": "10fb2302.38d86d",
+        "name": "getDeviceAppliancePerformance",
+        "selectedGroup": "",
+        "selectorAitems": [
+            "appliance",
+            "camera",
+            "cellularGateway",
+            "devices",
+            "insight",
+            "networks",
+            "organizations",
+            "sm",
+            "switch",
+            "wireless"
+        ],
+        "selectorBitems": [
+            "configure",
+            "monitor"
+        ],
+        "selectorCitems": [
+            "clients",
+            "dhcp",
+            "performance",
+            "security",
+            "uplink",
+            "vpn"
+        ],
+        "selectedGroupA": "appliance",
+        "selectedGroupB": "monitor",
+        "selectedGroupC": "performance",
+        "selectedMethod": "getDeviceAppliancePerformance",
+        "filteredMethods": [
+            {
+                "methodTags": [
+                    "appliance",
+                    "monitor",
+                    "performance"
+                ],
+                "methodName": "getDeviceAppliancePerformance",
+                "parameters": [
+                    {
+                        "camelCaseName": "serial"
+                    }
+                ],
+                "formHtml": "<h4>Parameters</h4><div class=\"form-row\" id=\"getDeviceAppliancePerformance_serial\"><label for=\"node-input-getDeviceAppliancePerformance_serial\" style=\"width:70%\"><i class=\"fa fa-list\"></i> <span><b>serial <span style=\"color:red;\"> *</span></b> <i>&nbspstring</i></span></label><p></p><input type=\"text\" id=\"node-input-getDeviceAppliancePerformance_serial\" placeholder=\"msg.serial\" style=\"width:70%\"><input type=\"hidden\" id=\"node-input-getDeviceAppliancePerformance_serialType\" value=\"string\" ></div>",
+                "example": "[\n  {\n    \"perfScore\": 10\n  }\n]",
+                "summary": "Return the performance score for a single MX. Only primary MX devices supported. If no data is available a 204 error code is returned."
+            }
+        ],
+        "lastUpdated": "",
+        "formHtml": "",
+        "method": "getDeviceAppliancePerformance",
+        "x": 596,
+        "y": 440,
+        "wires": [
+            [
+                "3aabd346.ee403c"
+            ]
+        ]
+    },
+    {
+        "id": "22d17d23.3054d2",
+        "type": "link out",
+        "z": "6340dfbe.e5963",
+        "name": "",
+        "links": [
+            "fbc31cc1.65ce2"
+        ],
+        "x": 1281,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "b82115d7.882818",
+        "type": "comment",
+        "z": "6340dfbe.e5963",
+        "name": "Verson 1.1",
+        "info": "Version 1.1\nLast updated on Sept. 12 2021",
+        "x": 1460,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "10fb2302.38d86d",
+        "type": "meraki-dashboard-api-v1-service",
+        "host": "https://api.meraki.com/api/v1",
+        "secureApiKeyHeaderOrQueryName": "X-Cisco-Meraki-API-Key",
+        "name": "Demo Meraki"
+    }
+]
